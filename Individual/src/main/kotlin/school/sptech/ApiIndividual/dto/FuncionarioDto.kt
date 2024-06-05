@@ -1,4 +1,4 @@
-package org.example.school.sptech.ApiIndividual.dto
+package school.sptech.ApiIndividual.dto
 
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotEmpty

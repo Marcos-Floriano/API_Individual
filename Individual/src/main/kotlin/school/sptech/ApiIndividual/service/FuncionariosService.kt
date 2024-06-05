@@ -1,13 +1,13 @@
-package org.example.school.sptech.ApiIndividual.service
+package school.sptech.ApiIndividual.service
 
 import org.springframework.stereotype.Service
-import org.example.school.sptech.ApiIndividual.dominio.Funcionarios
-import org.example.school.sptech.ApiIndividual.dto.FuncionarioDto
-import school.sptech.projetoestoque.repository.FuncionarioRepository
+import school.sptech.ApiIndividual.dominio.Funcionarios
+import school.sptech.ApiIndividual.dto.FuncionarioDto
+import school.sptech.ApiIndividual.repository.FuncionariosRepository
 
 @Service
-class FuncionarioService(
-    private val funcionarioRepository: FuncionarioRepository
+class FuncionariosService(
+    private val funcionarioRepository: FuncionariosRepository
 ) {
 
     fun getAllFuncionarios(): List<Funcionarios> = funcionarioRepository.findAll()

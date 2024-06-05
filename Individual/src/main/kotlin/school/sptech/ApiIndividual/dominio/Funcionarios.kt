@@ -1,5 +1,6 @@
-package org.example.school.sptech.ApiIndividual.dominio
+package school.sptech.ApiIndividual.dominio
 
+import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
@@ -8,6 +9,7 @@ import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
 
+@Entity
 class Funcionarios(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,

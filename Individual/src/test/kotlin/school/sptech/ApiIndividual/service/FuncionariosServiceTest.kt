@@ -7,21 +7,20 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvFileSource
 import org.mockito.Mockito.*
 import org.springframework.boot.test.context.SpringBootTest
-import org.example.school.sptech.ApiIndividual.dominio.Funcionarios
-import org.example.school.sptech.ApiIndividual.dto.FuncionarioDto
-import org.example.school.sptech.ApiIndividual.service.FuncionarioService
-import school.sptech.projetoestoque.repository.FuncionarioRepository
+import school.sptech.ApiIndividual.dominio.Funcionarios
+import school.sptech.ApiIndividual.dto.FuncionarioDto
+import school.sptech.ApiIndividual.repository.FuncionariosRepository
 import java.util.*
 
 @SpringBootTest
-class FuncionarioServiceTest {
+class FuncionariosServiceTest {
 
-    val service = FuncionarioService(mock(FuncionarioRepository::class.java))
-    private lateinit var funcionarioRepository: FuncionarioRepository
+    val service = FuncionariosService(mock(FuncionariosRepository::class.java))
+    private lateinit var funcionarioRepository: FuncionariosRepository
 
     @BeforeEach
     fun setup() {
-        funcionarioRepository = mock(FuncionarioRepository::class.java)
+        funcionarioRepository = mock(FuncionariosRepository::class.java)
     }
 
     @ParameterizedTest
@@ -40,7 +39,7 @@ class FuncionarioServiceTest {
     @CsvFileSource(resources = ["/funcionarios.csv"], numLinesToSkip = 1)
     fun `deve buscar funcionario por id`(id: Int, nome: String, cargo: String, salario: Double) {
         val funcionario = Funcionarios(id = id, nome = nome, cargo = cargo, salario = salario)
-        `when`(funcionarioRepository.findById(id.toLong())).thenReturn(Optional.of(funcionario))
+        `when`(funcionarioRepository.findById(id)).thenReturn(Optional.of(funcionario))
 
         val encontrado = service.getFuncionarioById(id)
         assertEquals(nome, encontrado.nome)

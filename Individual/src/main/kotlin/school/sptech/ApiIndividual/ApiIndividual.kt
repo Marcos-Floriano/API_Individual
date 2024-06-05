@@ -1,4 +1,4 @@
-package school.sptech.api_individual
+package school.sptech.ApiIndividual
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

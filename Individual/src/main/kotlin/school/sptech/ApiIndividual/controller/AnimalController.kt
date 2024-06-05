@@ -1,11 +1,11 @@
-package org.example.school.sptech.ApiIndividual.controller
+package school.sptech.ApiIndividual.controller
 
 import jakarta.validation.Valid
-import org.example.school.sptech.ApiIndividual.dominio.Animais
+import school.sptech.ApiIndividual.dominio.Animal
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import org.example.school.sptech.ApiIndividual.dto.AnimalDto
-import org.example.school.sptech.ApiIndividual.service.AnimalService
+import school.sptech.ApiIndividual.dto.AnimalDto
+import school.sptech.ApiIndividual.service.AnimalService
 
 @RestController
 @RequestMapping("/animais")
@@ -14,7 +14,7 @@ class AnimalController(
 ) {
 
     @GetMapping
-    fun listar(): ResponseEntity<List<Animais>> {
+    fun listar(): ResponseEntity<List<Animal>> {
         val animais = animalService.getAllAnimals()
         return if (animais.isEmpty()) {
             ResponseEntity.noContent().build()
@@ -24,19 +24,19 @@ class AnimalController(
     }
 
     @GetMapping("/{id}")
-    fun buscarPorId(@PathVariable id: Int): ResponseEntity<Animais> {
+    fun buscarPorId(@PathVariable id: Int): ResponseEntity<Animal> {
         val animal = animalService.getAnimalById(id)
         return ResponseEntity.ok(animal)
     }
 
     @PostMapping
-    fun criar(@RequestBody @Valid animalDTO: AnimalDto): ResponseEntity<Animais> {
+    fun criar(@RequestBody @Valid animalDTO: AnimalDto): ResponseEntity<Animal> {
         val animalSalvo = animalService.createAnimal(animalDTO)
         return ResponseEntity.status(201).body(animalSalvo)
     }
 
     @PutMapping("/{id}")
-    fun atualizar(@PathVariable id: Int, @RequestBody @Valid animalDTO: AnimalDto): ResponseEntity<Animais> {
+    fun atualizar(@PathVariable id: Int, @RequestBody @Valid animalDTO: AnimalDto): ResponseEntity<Animal> {
         val animalAtualizado = animalService.updateAnimal(id, animalDTO)
         return ResponseEntity.ok(animalAtualizado)
     }

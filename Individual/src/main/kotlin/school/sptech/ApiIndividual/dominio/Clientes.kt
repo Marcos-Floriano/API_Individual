@@ -1,4 +1,4 @@
-package org.example.school.sptech.ApiIndividual.dominio
+package school.sptech.ApiIndividual.dominio
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -7,6 +7,7 @@ import jakarta.persistence.Id
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.Size
+@Entity
 data class Clientes(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,

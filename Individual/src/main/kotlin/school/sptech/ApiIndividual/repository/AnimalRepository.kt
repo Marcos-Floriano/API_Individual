@@ -1,16 +1,16 @@
-package org.example.school.sptech.ApiIndividual.repository
+package school.sptech.ApiIndividual.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
-import org.example.school.sptech.ApiIndividual.dominio.Animais
+import school.sptech.ApiIndividual.dominio.Animal
 
 @Repository
-interface AnimalRepository : JpaRepository<Animais, Int> {
+interface AnimalRepository : JpaRepository<Animal, Int> {
 
     @Query("SELECT a FROM Animal a WHERE a.especie = :especie")
-    fun findByEspecie(especie: String): List<Animais>
+    fun findByEspecie(especie: String): List<Animal>
 
     @Query("SELECT a FROM Animal a WHERE a.idade >= :idadeMin AND a.idade <= :idadeMax")
-    fun findByIdadeBetween(idadeMin: Int, idadeMax: Int): List<Animais>
+    fun findByIdadeBetween(idadeMin: Int, idadeMax: Int): List<Animal>
 }
